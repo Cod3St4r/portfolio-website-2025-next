@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* Fonts */
+
+@font-face {
+  font-family: 'Geo';
+  src: url('./assets/fonts/Geo/Geo-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Geo';
+  src: url('./assets/fonts/Geo/Geo-Italic.ttf');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sixtyfour';
+  src: url('./assets/fonts/Sixtyfour 2/Sixtyfour-Regular-VariableFont_BLED\,SCAN.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'VT323';
+  src: url('./assets//fonts/VT323/VT323-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  /* Base colors */
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Brand colors */
+  --primary: #ffdd40;
+  --primary-dark: #e6c633;
+  --primary-light: #fff455;
+  
+  /* Green theme colors (for your navbar) */
+  --green-theme-main-color: #00ff41;
+  --green-theme-nav-background-color: rgba(0, 0, 0, 0.85);
+  --green-theme-secondary: #00cc33;
+  --green-theme-accent: rgba(0, 255, 65, 0.3);
+  
+  /* UI colors */
+  --navbar-bg: #1d1d1d;
+  --card-bg: #f8f9fa;
+  --border: #e5e7eb;
+  --shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Text colors */
+  --text-primary: #171717;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-white: #ffffff;
+  
+  /* Status colors */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-green: linear-gradient(135deg, var(--green-theme-main-color) 0%, var(--green-theme-secondary) 100%);
+  
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Base colors - dark mode */
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    
+    /* UI colors - dark mode */
+    --navbar-bg: #111111;
+    --card-bg: #1a1a1a;
+    --border: #333333;
+    --shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Text colors - dark mode */
+    --text-primary: #ededed;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    
+    /* Keep brand colors the same in dark mode */
+    /* --primary, --success, --error, etc. stay the same */
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Utility classes for easy color usage */
+.text-primary { color: var(--primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-green { color: var(--green-theme-main-color); }
+.text-white { color: var(--text-white); }
+
+.bg-primary { background-color: var(--primary); }
+.bg-card { background-color: var(--card-bg); }
+.bg-green { background-color: var(--green-theme-main-color); }
+.bg-green-nav { background-color: var(--green-theme-nav-background-color); }
+
+.border-default { border-color: var(--border); }
+.border-green { border-color: var(--green-theme-accent); }
+
+.gradient-primary { background: var(--gradient-primary); }
+.gradient-hero { background: var(--gradient-hero); }
+.gradient-green { background: var(--gradient-green); }

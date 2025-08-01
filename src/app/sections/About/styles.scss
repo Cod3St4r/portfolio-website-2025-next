@@ -1,0 +1,192 @@
+.PageContent {
+    display:flex;
+    flex-direction: row;
+    margin: 0 3%;
+    
+
+    &__Image_Container {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        width: min(50vw, 500px);
+        aspect-ratio: 1 / 1; // Modern way to maintain perfect square
+        margin: 20px auto; 
+        border-radius: 50%;
+        overflow: hidden; // Move overflow to container
+
+        &__img {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: svgGlow 2s ease-in-out infinite alternate, FadeIn 1s ease-out;
+        }
+    }
+
+    &__Text__Name{
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-family: 'Sixtyfour', 'Courier New', monospace;
+        color: #ffffff;
+        text-shadow: 
+            0 0 10px #ffffff,
+            0 0 20px #ffffff,
+            0 0 30px #ffffff,
+            0 0 40px #ffffff;
+        animation: glow 2s ease-in-out infinite alternate;
+        letter-spacing: -1px;
+        text-align: left;
+        margin: 20px;
+    }
+}
+
+
+
+
+
+// Mobile responsive text
+@media (max-width: 768px) {
+    .PageContent {
+        flex-direction: column-reverse;
+
+        &__Text__Name {
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            margin: 15px 0;
+            letter-spacing: -0.5px;
+            text-align: center;
+        }
+
+        &__Image_Container {
+            width: min(70vw, 300px);
+            // Remove height - aspect-ratio handles it
+            margin: 15px auto;
+
+            &__img {
+                animation: svgGlowMd 2s ease-in-out alternate infinite
+            }
+        }
+    }   
+}
+
+@media (max-width: 480px) {
+    .PageContent {
+        flex-direction: column-reverse;
+
+        &__Text__Name {
+            font-size: clamp(1.2rem, 7vw, 2rem);
+            margin: 10px 0;
+            letter-spacing: 0px;
+            text-align: center;
+        }
+
+        &__Image_Container {
+            width: min(80vw, 250px);
+            // Remove height - aspect-ratio handles it
+            margin: 10px auto;
+
+            &__img {
+                animation: svgGlowSml 2s ease-in-out alternate infinite
+            }
+        }
+    }
+}
+
+@keyframes svgGlow {
+  from {
+    filter: 
+      drop-shadow(0 0 5px var(--green-theme-main-color))
+      drop-shadow(0 0 10px var(--green-theme-main-color))
+      drop-shadow(0 0 15px var(--green-theme-main-color));
+  }
+  to {
+    filter: 
+      drop-shadow(0 0 5px var(--green-theme-main-color))
+      drop-shadow(0 0 10px var(--green-theme-main-color))
+      drop-shadow(0 0 15px var(--green-theme-main-color))
+      drop-shadow(0 0 20px var(--green-theme-main-color));
+  }
+}
+
+@keyframes svgGlowSml {
+        from {
+            filter: 
+            drop-shadow(0 0 2px var(--green-theme-main-color))
+            drop-shadow(0 0 4px var(--green-theme-main-color))
+            drop-shadow(0 0 6px var(--green-theme-main-color));
+        }
+        to {
+            filter: 
+            drop-shadow(0 0 2px var(--green-theme-main-color))
+            drop-shadow(0 0 4px var(--green-theme-main-color))
+            drop-shadow(0 0 6px var(--green-theme-main-color))
+            drop-shadow(0 0 8px var(--green-theme-main-color));
+        }
+}
+
+@keyframes svgGlowMd {
+        from {
+            filter: 
+            drop-shadow(0 0 3px var(--green-theme-main-color))
+            drop-shadow(0 0 6px var(--green-theme-main-color))
+            drop-shadow(0 0 9px var(--green-theme-main-color));
+        }
+        to {
+            filter: 
+            drop-shadow(0 0 3px var(--green-theme-main-color))
+            drop-shadow(0 0 6px var(--green-theme-main-color))
+            drop-shadow(0 0 9px var(--green-theme-main-color))
+            drop-shadow(0 0 12px var(--green-theme-main-color));
+        }
+    }
+
+
+
+@keyframes glow {
+  from {
+    text-shadow: 
+      0 0 10px #00ff41,
+      0 0 20px #00ff41,
+      0 0 30px #00ff41,
+      0 0 40px #00ff41;
+  }
+  to {
+    text-shadow: 
+      0 0 20px #00ff41,
+      0 0 30px #00ff41,
+      0 0 40px #00ff41,
+      0 0 50px #00ff41,
+      0 0 60px #00ff41;
+  }
+}
+
+@keyframes FadeIn{
+    0%{
+        opacity: 0;
+        transform: scale(0%);
+        filter: blur(10px);
+    }
+
+    25%{
+        opacity: .25;
+        transform: scale(25%);
+        filter: blur(7.5px)
+    }
+
+    50%{
+        opacity: .5;
+        transform: scale(50%);
+        filter: blur(5px)
+    }
+
+    75%{
+        opacity: .75;
+        transform: scale(75%);
+        filter: blur(2.5px)
+    }
+
+    100%{
+        opacity: 1;
+        transform: scaleY(100%);
+        filter: blur(0px)
+    }
+}

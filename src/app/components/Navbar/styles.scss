@@ -1,0 +1,174 @@
+.navbar{
+    background-color: var(--green-theme-nav-background-color);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--green-theme-accent);
+    box-shadow: 0 2px 20px var(--green-theme-main-color);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 100;
+    animation: riseUp 1s ease-out;
+    user-select: none;
+
+    &_container{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: inherit;
+        padding: 0px 20px;
+        flex: 1;
+
+
+        &_logo{
+            color: var(--green-theme-main-color);
+            cursor: pointer;
+
+            &:hover{
+                color: #ffffff;
+                animation: svgGlow 2s ease-in-out infinite alternate;
+            }
+        }
+
+        &_menu{
+            display: flex;
+            list-style: none;
+            text-align: center;
+
+            &_item{
+                line-height: 40px;
+                margin-right: 1.5rem;
+                font-size: 2rem;
+                font-family: "Geo", sans-serif;
+
+                &::after{
+                    content: '';
+                    display: block;
+                    height: 3px;
+                    width: 0;
+                    background: transparent;
+                    transition: all 0.5s ease;
+                }
+
+                &:hover::after{
+                    width: 100%;
+                    background: var(--green-theme-main-color);
+                }
+
+                
+
+                &_links{
+                    color: var(--green-theme-main-color);
+                    text-decoration: none;
+                    padding: 0.5rem;
+
+                    &:hover{
+                    color: #ffffff;
+                    text-shadow: 
+                    0 0 10px #ffffff,
+                    0 0 20px #ffffff,
+                    0 0 30px #ffffff,
+                    0 0 40px #ffffff;
+                    animation: glow 2s ease-in-out infinite alternate;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav_icon{
+    display: none;
+}
+
+@media only screen and (max-width : 768px){
+    .navbar_container_menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        border-top: 1px solid #fff;
+        position: absolute;
+        top: 80px;
+        left: -110%;
+        opacity: 1;
+        transition: all 0.5s ease;
+
+        &.active{
+            background-color: var(--green-theme-nav-background-color);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+            box-shadow: 0 2px 20px rgba(0, 255, 65, 0.1);
+            left: 0px;
+            opacity: 1;
+        }
+
+        &_item{
+            border-bottom: 1px solid#282828;
+            margin: 0px;
+            padding: 20px 0px;
+        }
+    }
+
+    .nav_icon{
+        display: block;
+        cursor: pointer;
+        color: var(--green-theme-main-color);
+        padding-right: 20px;
+    }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 
+      0 0 10px #00ff41,
+      0 0 20px #00ff41,
+      0 0 30px #00ff41,
+      0 0 40px #00ff41;
+  }
+  to {
+    text-shadow: 
+      0 0 20px #00ff41,
+      0 0 30px #00ff41,
+      0 0 40px #00ff41,
+      0 0 50px #00ff41,
+      0 0 60px #00ff41;
+  }
+}
+
+@keyframes svgGlow {
+  from {
+    filter: 
+      drop-shadow(0 0 2px #00ff41)
+      drop-shadow(0 0 4px #00ff41)
+      drop-shadow(0 0 6px #00ff41);
+  }
+  to {
+    filter: 
+      drop-shadow(0 0 2px #00ff41)
+      drop-shadow(0 0 4px #00ff41)
+      drop-shadow(0 0 6px #00ff41)
+      drop-shadow(0 0 8px #00ff41);
+  }
+}
+
+@keyframes riseUp{
+    0%{
+        opacity: 0;
+        transform: translateY(-100px);
+        filter: blur(10px)
+    }
+
+    50%{
+        opacity: .5;
+        transform: translateY(-50px);
+        filter: blur(5px)
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+        filter: blur(0px)
+    }
+}

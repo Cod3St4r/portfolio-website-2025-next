@@ -1,7 +1,9 @@
+
 .PageContent {
     display:flex;
     flex-direction: row;
     margin: 0 3%;
+    contain: layout style paint; // Limit reflow/repaint scope
     
 
     &__Image_Container {
@@ -18,25 +20,102 @@
         &__img {
             width: 80%;
             height: 80%;
+            aspect-ratio: 1 / 1;
             border-radius: 50%;
             object-fit: cover;
-            animation: svgGlow 2s ease-in-out infinite alternate, FadeIn 1s ease-out;
+            will-change: filter; // Optimize filter animations
+            transform: translateZ(0); // GPU acceleration
+            backface-visibility: hidden; // Prevent unnecessary repaints
         }
     }
 
-    &__Text__Name{
+    &__Text {
+        align-items: flex-start;
+        margin: 0 10px;
+
+        &__Name{
         font-size: clamp(2rem, 5vw, 3rem);
         font-family: 'Sixtyfour', 'Courier New', monospace;
         color: #ffffff;
-        text-shadow: 
-            0 0 10px #ffffff,
-            0 0 20px #ffffff,
-            0 0 30px #ffffff,
-            0 0 40px #ffffff;
-        animation: glow 2s ease-in-out infinite alternate;
+        will-change: text-shadow; // Optimize text animations
+        transform: translateZ(0); // GPU acceleration
         letter-spacing: -1px;
         text-align: left;
-        margin: 20px;
+        }
+
+
+        &__Btn {
+            position: relative;
+            align-items: center;
+            margin-top: 20px;
+            background: rgb(32, 32, 32);
+            border-radius: 10px;
+            color: #FFFFFF;
+            display: flex;
+            font-family: "Geo", sans-serif;
+            font-size: 20px;
+            justify-content: center;
+            height: 50px;
+            width: 100px;
+            border: none;
+            outline: none;
+            max-width: 100%;
+            min-width: 140px;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            white-space: nowrap;
+            cursor: pointer;
+            will-change: transform; // Tell browser to optimize
+            transform: translate3d(0, 0, 0); // Force GPU layer
+            backface-visibility: hidden; // Prevent unnecessary repaintsContain pseudo-elements
+        }
+
+        &__Btn:before {
+            content: "";
+            position: absolute;
+            background: linear-gradient(45deg, 
+            #003f1f, 
+            #00ff41, 
+            #a6ffb0,
+            #00ff41, 
+            #003f1f );
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            filter: blur(5px);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+        }
+
+         &__Btn:active {
+            color: black
+        }
+
+        &__Btn:active:after {
+            background:transparent;
+        }
+
+        &__Btn:hover:before {
+            opacity: 1;
+        }
+
+        &__Btn:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: inherit;
+        }
     }
 }
 
@@ -60,10 +139,6 @@
             width: min(70vw, 300px);
             // Remove height - aspect-ratio handles it
             margin: 15px auto;
-
-            &__img {
-                animation: svgGlowMd 2s ease-in-out alternate infinite
-            }
         }
     }   
 }
@@ -83,79 +158,98 @@
             width: min(80vw, 250px);
             // Remove height - aspect-ratio handles it
             margin: 10px auto;
-
-            &__img {
-                animation: svgGlowSml 2s ease-in-out alternate infinite
-            }
         }
     }
 }
 
-@keyframes svgGlow {
-  from {
-    filter: 
-      drop-shadow(0 0 5px var(--green-theme-main-color))
-      drop-shadow(0 0 10px var(--green-theme-main-color))
-      drop-shadow(0 0 15px var(--green-theme-main-color));
-  }
-  to {
-    filter: 
-      drop-shadow(0 0 5px var(--green-theme-main-color))
-      drop-shadow(0 0 10px var(--green-theme-main-color))
-      drop-shadow(0 0 15px var(--green-theme-main-color))
-      drop-shadow(0 0 20px var(--green-theme-main-color));
-  }
-}
-
-@keyframes svgGlowSml {
-        from {
-            filter: 
-            drop-shadow(0 0 2px var(--green-theme-main-color))
-            drop-shadow(0 0 4px var(--green-theme-main-color))
-            drop-shadow(0 0 6px var(--green-theme-main-color));
-        }
-        to {
-            filter: 
-            drop-shadow(0 0 2px var(--green-theme-main-color))
-            drop-shadow(0 0 4px var(--green-theme-main-color))
-            drop-shadow(0 0 6px var(--green-theme-main-color))
-            drop-shadow(0 0 8px var(--green-theme-main-color));
-        }
-}
-
-@keyframes svgGlowMd {
-        from {
-            filter: 
-            drop-shadow(0 0 3px var(--green-theme-main-color))
-            drop-shadow(0 0 6px var(--green-theme-main-color))
-            drop-shadow(0 0 9px var(--green-theme-main-color));
-        }
-        to {
-            filter: 
-            drop-shadow(0 0 3px var(--green-theme-main-color))
-            drop-shadow(0 0 6px var(--green-theme-main-color))
-            drop-shadow(0 0 9px var(--green-theme-main-color))
-            drop-shadow(0 0 12px var(--green-theme-main-color));
-        }
+// Only animate if user allows motion
+@media (prefers-reduced-motion: no-preference) {
+    .PageContent__Image_Container__img {
+        animation: svgGlowOptimized 2s ease-in-out infinite alternate, FadeIn 1s ease-out;
+    }
+    
+    .PageContent__Text__Name {
+        animation: glowOptimized 2s ease-in-out infinite alternate;
     }
 
+    .PageContent__Text__Btn::before {
+       animation: glowing 20s linear infinite;
+    }
+    
+    @media (max-width: 768px) {
+        .PageContent__Image_Container__img {
+            animation: svgGlowMdOptimized 2s ease-in-out alternate infinite, FadeIn 1s ease-out;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .PageContent__Image_Container__img {
+            animation: svgGlowSmlOptimized 2s ease-in-out alternate infinite, FadeIn 1s ease-out;
+        }
+    }
+}
 
+@media (prefers-reduced-motion: reduce) {
+    .PageContent__Image_Container__img {
+        animation: none;
+        // Static cool effects instead
+        filter: drop-shadow(0 0 10px var(--green-theme-main-color));
+        box-shadow: 0 0 15px var(--green-theme-main-color);
+    }
+    
+    .PageContent__Text__Name {
+        animation: none;
+        text-shadow: 0 0 15px #00ff41, 0 0 25px #00ff41;
+    }
+}
 
-@keyframes glow {
+// Optimized rotation animation
+@keyframes rotationOptimized {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// Optimized glow animations with reduced complexity
+@keyframes svgGlowOptimized {
   from {
-    text-shadow: 
-      0 0 10px #00ff41,
-      0 0 20px #00ff41,
-      0 0 30px #00ff41,
-      0 0 40px #00ff41;
+    filter: drop-shadow(0 0 8px var(--green-theme-main-color));
+    box-shadow: 0 0 15px var(--green-theme-main-color);
   }
   to {
-    text-shadow: 
-      0 0 20px #00ff41,
-      0 0 30px #00ff41,
-      0 0 40px #00ff41,
-      0 0 50px #00ff41,
-      0 0 60px #00ff41;
+    filter: drop-shadow(0 0 12px var(--green-theme-main-color));
+    box-shadow: 0 0 25px var(--green-theme-main-color);
+  }
+}
+
+@keyframes svgGlowSmlOptimized {
+  from {
+    filter: drop-shadow(0 0 4px var(--green-theme-main-color));
+    box-shadow: 0 0 8px var(--green-theme-main-color);
+  }
+  to {
+    filter: drop-shadow(0 0 6px var(--green-theme-main-color));
+    box-shadow: 0 0 12px var(--green-theme-main-color);
+  }
+}
+
+@keyframes svgGlowMdOptimized {
+  from {
+    filter: drop-shadow(0 0 6px var(--green-theme-main-color));
+    box-shadow: 0 0 12px var(--green-theme-main-color);
+  }
+  to {
+    filter: drop-shadow(0 0 9px var(--green-theme-main-color));
+    box-shadow: 0 0 18px var(--green-theme-main-color);
+  }
+}
+
+// Optimized text glow
+@keyframes glowOptimized {
+  from {
+    text-shadow: 0 0 15px #00ff41, 0 0 25px #00ff41;
+  }
+  to {
+    text-shadow: 0 0 25px #00ff41, 0 0 35px #00ff41;
   }
 }
 
@@ -189,4 +283,10 @@
         transform: scaleY(100%);
         filter: blur(0px)
     }
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }

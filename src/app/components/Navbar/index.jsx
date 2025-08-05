@@ -3,7 +3,7 @@
 import React from "react";
 import { FaBars } from 'react-icons/fa';
 import { VscTerminal } from "react-icons/vsc";
-import Link from 'next/link';
+import { Link } from 'react-scroll';
 import { HiX } from 'react-icons/hi';
 import { useState } from "react";
 import { usePathname } from 'next/navigation';
@@ -11,28 +11,28 @@ import './styles.scss';
 
 const data = [
     {
-        label: 'HOME',
-        to: '/'
+        label: 'HERO',
+        to: "hero"
     },
     {
         label: 'ABOUT',
-        to: '/about'
+        to: 'about'
     },
     {
-        label: 'SKILLS',
-        to: '/skills'
+        label: 'Experience',
+        to: "experience"
     },
     {
         label: 'PORTFOLIO',
-        to: '/portfolio'
+        to: 'portfolio'
     },
     {
         label: 'RESUME',
-        to: '/resume'
+        to: 'resume'
     },
     {
         label: 'CONTACT',
-        to: '/contact'
+        to: 'contact'
     },
 ];
 
@@ -62,8 +62,10 @@ const Navbar = () => {
                             <li key={key} className="navbar_container_menu_item">
                                 <Link 
                                     className={`navbar_container_menu_item_links ${pathname === item.to ? 'active' : ''}`} 
-                                    href={item.to}
+                                    to={item.to}
                                     onClick={closeMenu}
+                                    smooth={true}
+                                    duration={500}
                                 >
                                     {item.label}
                                 </Link>

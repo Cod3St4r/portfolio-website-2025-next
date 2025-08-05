@@ -1,5 +1,5 @@
 .home {
-  height: 100vh;
+  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,97 +13,7 @@
     padding: 2rem;
     perspective: 1000px;
   }
-  
-  &_contact-me {
-      display: flex;
-      justify-content: center;
-      margin-top: 25px;
-      opacity: 0;
-      animation: glitchIn 2s;
-      animation-delay: 1s;
-      animation-fill-mode: forwards;
 
-
-      button{
-        width: 220px;
-        height: 50px;
-        border: none;
-        outline: none;
-        font-size: 1.5rem;
-        color: #fff;
-        background: rgba(0,0,0,.7);
-        cursor: pointer;
-        position: relative;
-        z-index: 0;
-        border-radius: 10px;
-        border: 2px solid #00ff41;
-        font-family: 'Sixtyfour', 'Courier New', monospace;
-        text-shadow: 
-        0 0 10px #ffffff,
-        0 0 20px #ffffff,
-        0 0 30px #ffffff,
-        0 0 40px #ffffff;
-        animation: glow 2s ease-in-out infinite alternate; 
-      }
-
-      button:before {
-        content: '';
-        background: linear-gradient(45deg, #003d00, #00ff41, #ffffff, #39ff14, #00ff7f, #ffffff, #00cc33, #004d00, #003d00);
-        position: absolute;
-        top: -2px;
-        left:-2px;
-        background-size: 400%;
-        z-index: -1;
-        color: #000;
-        filter: blur(5px);
-        width: calc(100% + 4px);
-        height: calc(100% + 4px);
-        animation: glowing 20s linear infinite;
-        opacity: 0;
-        transition: opacity .3s ease-in-out;
-        border-radius: 10px;
-        border: 0px solid rgb(255, 1, 1);
-      }
-
-
-      button:active {
-        color: #000;
-        border: 0px solid rgba(0,0,0);
-      }
-
-  button:active:after {
-    background: transparent;
-    border: 0px solid rgba(0,0,0);
-
-  }
-
-  button:hover:before {
-      opacity: 1;
-      border: 0px solid rgba(0,0,0);
-  }
-
-  button:after {
-      z-index: -1;
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      left: 0;
-      top: 0;
-      border-radius: 10px;
-      border: 0px solid rgba(0,0,0);
-
-  }
-
-
-  }
-
-  
-
-  
-
-  
 
   @keyframes glowing {
       0% { background-position: 0 0; }

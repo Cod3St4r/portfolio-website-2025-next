@@ -65,7 +65,7 @@
   --info: #3b82f6;
   
   /* Gradients */
-  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  --gradient-primary: linear-gradient(135deg, #003f1f, #00ff41, #a6ffb0);
   --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-green: linear-gradient(135deg, var(--green-theme-main-color) 0%, var(--green-theme-secondary) 100%);
   

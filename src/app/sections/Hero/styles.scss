@@ -8,7 +8,7 @@
   
   &__content {
     text-align: center;
-    z-index: 10;
+    z-index: 1;
     max-width: 800px;
     padding: 2rem;
     perspective: 1000px;
@@ -34,7 +34,7 @@
     margin-bottom: 1rem;
     font-family: 'Sixtyfour', 'Courier New', monospace;
     letter-spacing: 2px;
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: glowText 2s ease-in-out infinite alternate;
     animation-fill-mode: forwards;
     user-select: none;
   
@@ -61,7 +61,7 @@
     margin-bottom: 1rem;
     font-family: 'Sixtyfour', 'Courier New', monospace;
     letter-spacing: 2px;
-    animation: glow 2s ease-in-out infinite alternate;
+    animation: glowText 2s ease-in-out infinite alternate;
     
     @media (max-width: 768px) {
       font-size: 2.5rem;
@@ -73,7 +73,7 @@
   }
 }
 
-@keyframes glow {
+@keyframes glowText {
   from {
     text-shadow: 
       0 0 10px #00ff41,
@@ -90,6 +90,7 @@
       0 0 60px #00ff41;
   }
 }
+
 @keyframes glow_reverse {
   from {
     text-shadow: 

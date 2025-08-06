@@ -1,11 +1,20 @@
 "use client"
 
+import { useState, useEffect } from 'react';
 import React from "react";
 import "./styles.scss";
 import { SiBmw } from "react-icons/si"
-import { FaGoogle } from "react-icons/fa"
-import { FaXbox } from "react-icons/fa"
-import { FaReact } from "react-icons/fa"
+import { FaGoogle, FaXbox, FaReact, FaPython, FaUnity, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa"
+
+
+const iconList = [
+    FaReact,
+    FaPython,
+    FaUnity,
+    FaHtml5,
+    FaCss3Alt,
+    FaJs
+]
 
 const exp = [
     {
@@ -27,12 +36,25 @@ const exp = [
 
 
 const Experience = () => {
+
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex(prev => (prev+1) % iconList.length);
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const CurrentIcon = iconList[index]
+
     return (
     <div className="MainContainer">
         <div className="MainContainer__TechStack">
             <h1>Tech Stack</h1>
             <div className="MainContainer__TechStack__Screen">
-                <FaReact className="MainContainer__TechStack__Logo"/>
+                <CurrentIcon className="MainContainer__TechStack__Logo"/>
             </div>
         </div>
 

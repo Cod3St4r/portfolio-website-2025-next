@@ -5,6 +5,7 @@ import React from "react";
 import "./styles.scss";
 import { SiBmw } from "react-icons/si"
 import { FaGoogle, FaXbox, FaReact, FaPython, FaUnity, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa"
+import { IoIosArrowDown } from "react-icons/io";
 
 
 const iconList = [
@@ -20,17 +21,17 @@ const exp = [
     {
         icon: SiBmw,
         name: "BMW",
-        description: "this is my experience",
+        description: "Financial Controlling Intern; May 2025 - Aug 2025",
     },
      {
         icon: FaGoogle,
         name: "Google",
-        description: "this is my experience",
+        description: "Software Dev Intern; May 2024 - Aug 2024",
     },
      {
         icon: FaXbox,
         name: "Xbox",
-        description: "this is my experience",
+        description: "Game Dev; May 2023 - Aug 2023",
     },
 ];
 
@@ -67,9 +68,12 @@ const Experience = () => {
                     exp.map((item, key) => (
                         <li key={key}>
                             <div className="MainContainer__Professional__Menu__Item">
-                                <item.icon></item.icon>
-                                <h2>{item.name}</h2>
-                                <p>{item.description}</p>
+                                <item.icon size={50} className="MainContainer__Professional__Menu__Item__Logo"></item.icon>
+                                <div className="MainContainer__Professional__Menu__Item__Text">
+                                    <h2 className="MainContainer__Professional__Menu__Item__Text__Name">{item.name}</h2>
+                                    <p className="MainContainer__Professional__Menu__Item__Text__Desc">{item.description}</p>
+                                </div>
+                                <IoIosArrowDown size={40} className="MainContainer__Professional__Menu__Item__Arrow"></IoIosArrowDown>
                             </div>
                         </li>                    
                     ))

@@ -19,12 +19,12 @@ const data = [
         to: 'about'
     },
     {
-        label: 'Experience',
+        label: 'EXPERIENCE',
         to: "experience"
     },
     {
-        label: 'PORTFOLIO',
-        to: 'portfolio'
+        label: 'PROJECTS',
+        to: 'projects'
     },
     {
         label: 'RESUME',

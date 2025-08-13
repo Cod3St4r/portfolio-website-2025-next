@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: row;
     color: white;
-    margin-left: auto;
-    margin-right: auto;
+    
+    
 
 
 
@@ -13,8 +13,12 @@
         text-align: center;
         justify-content: center;
         align-items: center;
-        margin-right: 20%;
-        margin-bottom: 100px;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+
+
+        
 
         &__Screen{
             display: flex;
@@ -27,7 +31,6 @@
             background-size: 100% 5px;
             justify-content: center;
             align-items: center;
-            margin-top: 10%;
             border-radius: 5px;
         }
 
@@ -62,7 +65,8 @@
         will-change: text-shadow; // Optimize text animations
         transform: translateZ(0); // GPU acceleration
         letter-spacing: -1px;
-        text-align: left;
+        margin-bottom: 50px;
+
     }
 
     
@@ -73,6 +77,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+
 
 
         &__Menu {
@@ -87,38 +95,113 @@
                 background: black;
                 border-radius: 15px;
                 margin: 10px;
-                padding: 0px 10px;
+                padding: 15px 20px;
                 filter: drop-shadow(0 0 3px white);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                
+                // Responsive width constraints
+                width: clamp(300px, 80vw, 600px);
+                min-height: 80px;
+                max-width: 100%;
+
+                &.active {
+                    align-items: flex-start;
+                    padding: 20px;
+                    min-height: auto;
+                }
+
+                &:active > &__Arrow {
+                    transform: rotate(90deg) translate(-5px,-5px);
+                    &:before {
+                        transform: translate(10px,0)
+                    }
+                    &:after {
+                        transform: rotate(90deg) translate(10px,0)
+                    }
+                }
                 
 
                 &__Logo {
                     color: var(--green-theme-main-color);
+                    flex-shrink: 0;
+                    font-size: clamp(2rem, 4vw, 3rem);
                 }
 
                 &__Text {
                     display: flex;
                     flex-direction: column;
                     text-align: left;
-                    margin: 1rem;
+                    margin: 0 1rem;
+                    flex: 1;
+                    min-width: 0; // Allows text to wrap properly
 
                     &__Name {
                         color: white;
                         font-family: Sixtyfour; 
-                        font-size: 1.6rem;
+                        font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+                        margin: 0;
                     }
-                    &__Desc {
+                    &__Title {
                         color: white;
                         font-family: Geo;
-                        font-size: 1.4rem;
+                        font-size: clamp(1rem, 2vw, 1.3rem);
+                        margin: 0.2rem 0 0 0;
+                    }
+
+                    &__Desc {
+                        overflow: hidden;
+                        transition: max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease;
+                        
+                        &.collapsed {
+                            max-height: 0;
+                            padding: 0;
+                            margin: 0;
+                        }
+                        
+                        &.expanded {
+                            max-height: clamp(180px, 30vh, 320px);
+                            padding-top: 0.75rem;
+                            margin-top: 0.5rem;
+                        }
+
+                        p {
+                            color: #a0a0a0;
+                            font-family: 'Arial', sans-serif;
+                            font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+                            line-height: 1.4;
+                            margin: 0;
+                            word-wrap: break-word;
+                        }
                     }
                 }
 
                 &__Arrow{
                     color: white;
-                    align-self: normal;
+                    align-self: center;
                     margin-left: auto;
-                }
-                
+                    position: relative;
+                    transition: transform 0.3s ease;
+                    flex-shrink: 0;
+                    font-size: clamp(1.5rem, 3vw, 2.5rem);
+
+                    &.rotated {
+                        transform: rotate(180deg);
+                    }
+
+                    &:before, &:after {
+                        position: absolute;
+                        content: "";
+                        width:inherit;
+                        height: 25%;
+                        background-color: #fff;
+                        transition: 1s ease;
+                    }
+                    &:after {
+                        position: absolute;
+                        transform: rotate(90deg);
+                    }
+                }    
             }
 
             &__Item:before {
@@ -142,9 +225,9 @@
                 transition: opacity .3s ease-in-out;
             }
 
-            &__Item:active:after {
-                background:transparent;
-            }
+            // &__Item:active:after {
+            //     background:transparent;
+            // }
 
             &__Item:hover:before {
                 opacity: 1;
@@ -172,20 +255,25 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        
-        &__TechStack {
-            margin-right: 0;
-        }
     }   
+    .MainContainer__Professional {
+        margin-top: 100px;
+    }
+    .MainContainer__TechStack {
+        margin-top: 100px;
+    }
 }
 
 @media (max-width: 480px) {
     .MainContainer {
         flex-direction: column;
+    }
 
-        &__TechStack {
-            margin-right: 0;
-        }
+    .MainContainer__Professional {
+        margin-top: 100px;
+    }
+    .MainContainer__TechStack {
+        margin-top: 100px;
     }
 }
 
@@ -216,9 +304,21 @@
     .MainContainer__Professional__Menu__Item::before {
         animation: glowing 20s linear infinite;
     }
-    .MainContainer__Professional__Menu__Item:hover {
-       filter: drop-shadow(0 0 0 rgba(#000, 0));
+    .MainContainer__Professional__Menu__Item:hover  {
+        filter: drop-shadow(0 0 0 rgba(#000, 0));
 
+    }
+    .MainContainer__Professional__Menu__Item:hover .MainContainer__Professional__Menu__Item__Text__Name  {
+        animation: glowOptimized 2s alternate infinite;
+    }
+
+    .MainContainer__Professional__Menu__Item:hover .MainContainer__Professional__Menu__Item__Text__Title  {
+        animation: glowOptimized 2s alternate infinite;
+    }
+
+    .MainContainer__Professional__Menu__Item:hover > .MainContainer__Professional__Menu__Item__Logo  {
+        color: white;
+        animation: svgGlow 2s ease-in-out alternate infinite;
     }
 
 }

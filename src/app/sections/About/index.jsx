@@ -10,8 +10,8 @@ const About=()=>{
                 <div className="PageContent__Text">
                     <h1 className="PageContent__Text__Name">A Jack of All Trades</h1>
                     <p className="PageContent__Text__Para">
-                        In ex anim tempor reprehenderit velit et. Cillum occaecat cupidatat sunt pariatur non adipisicing nulla. Consectetur do tempor fugiat nostrud quis laboris magna.
-                        </p>
+                       I’m a computer science grad who loves building things—whether it’s a clean, responsive website, a game that pulls you in, or a piece of tech that just works better than before. I’m just as happy tinkering with code and automation as I am designing visuals or snapping photos, and I’ve found that creativity makes the technical side even stronger. For me, every project is a mix of logic and imagination—and that’s where the fun really starts.
+                    </p>
                     <button type="button" className="PageContent__Text__Btn" onClick={() => console.log('Hello world!')}>Contact Me</button>
                 </div>
                 <div className="PageContent__Image_Container">

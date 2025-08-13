@@ -21,17 +21,22 @@ const exp = [
     {
         icon: SiBmw,
         name: "BMW",
-        description: "Financial Controlling Intern; May 2025 - Aug 2025",
+        title: "Financial Controlling Intern; May 2025 - Aug 2025",
+        description: "As a Financial Controlling Intern at BMW, you support the analysis and optimization of financial processes across various business units. Your responsibilities include preparing reports, developing dashboards, and assisting with budget monitoring to ensure accuracy and compliance. You collaborate closely with senior controllers, gaining hands-on experience with data visualization tools and process automation."
+        
     },
      {
         icon: FaGoogle,
         name: "Google",
-        description: "Software Dev Intern; May 2024 - Aug 2024",
+        title: "Software Dev Intern; May 2024 - Aug 2024",
+        description: "As a Software Developer at Google, you design, code, test, and maintain high-performance applications that serve millions of users worldwide. You work in cross-functional teams to solve complex technical challenges, leveraging scalable infrastructure and cutting-edge technologies. Your role involves writing clean, efficient code while contributing to system architecture and product innovation."
     },
      {
         icon: FaXbox,
         name: "Xbox",
-        description: "Game Dev; May 2023 - Aug 2023",
+        title: "Game Dev; May 2023 - Aug 2023",
+        description: "As a Game Developer for Xbox, you create engaging, interactive experiences optimized for the Xbox ecosystem. You work on game mechanics, performance optimization, and platform-specific features to ensure a smooth player experience. Collaborating with artists, designers, and other developers, you bring game concepts to life from prototype to final release."
+
     },
 ];
 
@@ -39,6 +44,11 @@ const exp = [
 const Experience = () => {
 
     const [index, setIndex] = useState(0);
+    const [activeItem, setActiveItem] = useState(null);
+
+    const handleItemClick = (itemIndex) => {
+        setActiveItem(activeItem === itemIndex ? null : itemIndex);
+    };
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -67,13 +77,19 @@ const Experience = () => {
                 {
                     exp.map((item, key) => (
                         <li key={key}>
-                            <div className="MainContainer__Professional__Menu__Item">
+                            <div 
+                                className={`MainContainer__Professional__Menu__Item ${activeItem === key ? 'active' : ''}`}
+                                onClick={() => handleItemClick(key)}
+                            >
                                 <item.icon size={50} className="MainContainer__Professional__Menu__Item__Logo"></item.icon>
                                 <div className="MainContainer__Professional__Menu__Item__Text">
                                     <h2 className="MainContainer__Professional__Menu__Item__Text__Name">{item.name}</h2>
-                                    <p className="MainContainer__Professional__Menu__Item__Text__Desc">{item.description}</p>
+                                    <p className="MainContainer__Professional__Menu__Item__Text__Title">{item.title}</p>
+                                    <div className={`MainContainer__Professional__Menu__Item__Text__Desc ${activeItem === key ? 'expanded' : 'collapsed'}`}>
+                                        <p>{item.description}</p>
+                                    </div>
                                 </div>
-                                <IoIosArrowDown size={40} className="MainContainer__Professional__Menu__Item__Arrow"></IoIosArrowDown>
+                                <IoIosArrowDown size={40} className={`MainContainer__Professional__Menu__Item__Arrow ${activeItem === key ? 'rotated' : ''}`}></IoIosArrowDown>
                             </div>
                         </li>                    
                     ))

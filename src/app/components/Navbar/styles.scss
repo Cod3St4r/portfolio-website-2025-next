@@ -64,16 +64,6 @@
                     color: var(--green-theme-main-color);
                     text-decoration: none;
                     padding: 0.5rem;
-
-                    &:hover{
-                    color: #ffffff;
-                    text-shadow: 
-                    0 0 10px #ffffff,
-                    0 0 20px #ffffff,
-                    0 0 30px #ffffff,
-                    0 0 40px #ffffff;
-                    animation: glow 2s ease-in-out infinite alternate;
-                    }
                 }
             }
         }
@@ -121,7 +111,14 @@
     }
 }
 
-@keyframes glow {
+@media (prefers-reduced-motion: no-preference) {
+    .navbar_container_menu_item_links:hover {
+        color: white;
+        animation: glowText 2s ease-in-out alternate infinite;
+    }
+}
+
+@keyframes glowText {
   from {
     text-shadow: 
       0 0 10px #00ff41,

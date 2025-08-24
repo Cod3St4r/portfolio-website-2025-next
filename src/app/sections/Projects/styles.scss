@@ -1,0 +1,161 @@
+.Page {
+    margin-top: 50px;
+
+    &__Title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-family: 'Sixtyfour', 'Courier New', monospace;
+        color: #ffffff;
+        will-change: text-shadow; // Optimize text animations
+        transform: translateZ(0); // GPU acceleration
+        letter-spacing: -1px;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    &__Projects{
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        
+
+
+        &__Card {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            height: 667px;
+            background: rgb(30, 30, 30);
+            margin: 50px;
+            align-items: center;
+            border-radius: 15px;
+            filter: drop-shadow(0 0 5px white);
+
+            &__Image {
+                width: inherit;
+                height: 40%;
+                object-fit: cover;
+                border-top-right-radius:  inherit; 
+                border-top-left-radius:  inherit; 
+                object-position: 50% 10%;
+
+            }
+
+            &__Description {
+                text-overflow: wrap;
+            }
+        }
+
+        &__Card:before {
+            content: "";
+            position: absolute;
+            background: linear-gradient(45deg, 
+            #003f1f, 
+            #00ff41, 
+            #a6ffb0,
+            #00ff41, 
+            #003f1f );
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            filter: blur(5px);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+        }
+
+        &__Card:hover:before {
+            opacity: 1;
+        }
+
+        &__Card:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: inherit;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .Page__Projects__Card:before {
+        animation: glowing 20s linear infinite;
+    }
+    .Page__Projects__Card:hover{
+        filter: drop-shadow(0 0 0 rgba(#000, 0));
+    }
+    .Page__Projects__Card:hover .Page__Projects__Card__Title{
+        animation: glowOptimized 2s alternate infinite;
+    };
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes glowOptimized {
+  from {
+    text-shadow: 0 0 15px #00ff41, 0 0 25px #00ff41;
+  }
+  to {
+    text-shadow: 0 0 25px #00ff41, 0 0 35px #00ff41;
+  }
+}
+
+@keyframes svgGlow {
+  from {
+    filter: 
+      drop-shadow(0 0 2px #00ff41)
+      drop-shadow(0 0 4px #00ff41)
+      drop-shadow(0 0 6px #00ff41);
+  }
+  to {
+    filter: 
+      drop-shadow(0 0 2px #00ff41)
+      drop-shadow(0 0 4px #00ff41)
+      drop-shadow(0 0 6px #00ff41)
+      drop-shadow(0 0 8px #00ff41);
+  }
+}
+
+@keyframes glow {
+    from {
+        filter: blur(2.5rem)
+    }
+    to {
+        filter: blur(4.5rem);
+    }
+    
+}
+
+@keyframes flicker {
+    0% { 
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .3;
+        transform: translateX(-1px) ;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

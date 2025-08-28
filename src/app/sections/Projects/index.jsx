@@ -3,6 +3,11 @@
 import React from "react";
 import "./styles.scss";
 
+// Code for Project card hovering
+// https://codepen.io/nefejames/pen/ogvNgJq
+// https://www.youtube.com/watch?v=aJpjUm71qBM&t=6569s&pp=ygUacG9ydGZvbGlvIHdlYnNpdGUgdHV0b3JpYWzSBwkJsgkBhyohjO8%3D 
+
+
 const projects =[
     {
         imgSrc: '/images/frpic.jpg',

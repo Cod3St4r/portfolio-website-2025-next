@@ -50,6 +50,7 @@ const Experience = () => {
         setActiveItem(activeItem === itemIndex ? null : itemIndex);
     };
 
+    // Icon switching in Tech Stack
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex(prev => (prev+1) % iconList.length);

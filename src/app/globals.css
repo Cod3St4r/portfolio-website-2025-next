@@ -30,6 +30,22 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Neovibes';
+  src: url('./assets/fonts/ncl-neovibes/NCLNeovibes-Demo.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ToxiGenesis';
+  src: url('./assets/fonts/toxigenesis/toxigenesis\ bd.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 :root {
   /* Base colors */
   --background: #ffffff;

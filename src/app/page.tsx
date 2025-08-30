@@ -4,6 +4,7 @@ import Hero from "./sections/Hero"
 import About from './sections/About'
 import Projects from './sections/Projects'
 import Experience from './sections/Experience'
+import Contact from './sections/Contact'
 
 // import Skills from './sections/Skills'
 
@@ -20,9 +21,10 @@ export default function Home() {
         <section id="about"><About /></section>
         <section id="experience"><Experience /></section>
         <section id="projects"><Projects /></section>
+         <section id="contact"><Contact /></section>
         {/* <section id="skills"><Skills /></section>
         <section id="experience"><Experience /></section>
-        <section id="contact"><Contact /></section> */}
+        */}
       </main>
     </>
   );

@@ -2,6 +2,10 @@
 
 import React from "react";
 import "./styles.scss";
+import { useRouter } from 'next/navigation';
+import {motion, useMotionValue, useSpring, useTransform} from 'framer-motion'
+
+
 
 // Code for Project card hovering
 // https://codepen.io/nefejames/pen/ogvNgJq
@@ -40,23 +44,74 @@ const Projects = () => {
             <ul className='Page__Projects'>
                 {
                     projects.map((item,key) =>(
-                        <li key={key}>
-                            <div className='Page__Projects__Card'>
-                                <img className='Page__Projects__Card__Image' src={item.imgSrc}></img>
-                                <h2 className ='Page__Projects__Card__Title'>{item.title}</h2>
-                                <p className='Page__Projects__Card__Description'>{item.description}</p>
-                                <div className='Page__Projects__Card__Buttons'>
-                                    <button className='Page__Projects__Card__Buttons__Github' type="button" onClick={()=> window.open(item.gitLink, '_blank')}>Github</button>
-                                    <button className='Page__Projects__Card__Buttons__Website' type="button" onClick={()=> window.open(item.projectLink, '_blank')}>Website</button>
-                                </div>
-                            </div>
-                        </li>
+                        <ProjectCard key={key} item={item} />
                     ))
-                
-}    
+                }    
             </ul>
         </div>
+    )
+}
 
+const ProjectCard = ({ item }) => {
+    const x = useMotionValue(0)
+    const y = useMotionValue(0)
+
+    const xSpring = useSpring(x, { stiffness: 300, damping: 30 })
+    const ySpring = useSpring(y, { stiffness: 300, damping: 30 })
+
+    // Increased tilt angles for more obvious effect
+    const xRotation = useTransform(ySpring, [-0.5,0.5], ["25deg", "-25deg"])
+    const yRotation = useTransform(xSpring, [-0.5, 0.5], ["-25deg", "25deg"])
+
+    const handleMouseMove = (e) => {
+        if(!e.currentTarget) return
+
+        const target = e.currentTarget;
+        const clientRect = target.getBoundingClientRect();
+
+        const xPos = (e.clientX - clientRect.left) / 
+        clientRect.width - 0.5;
+
+        const yPos = (e.clientY - clientRect.top) / 
+        clientRect.height - 0.5;
+
+        x.set(xPos)
+        y.set(yPos)
+    }
+
+    const handleMouseLeave = () => {
+        x.set(0)
+        y.set(0)
+    }
+
+    return (
+        <li>
+            <motion.div 
+                className='Page__Projects__Card'
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                    transformStyle: "preserve-3d",
+                    rotateX: xRotation,
+                    rotateY: yRotation,
+                    perspective: "1000px"
+                }}
+                whileHover={{ 
+                    scale: 1.3,
+                    z: 50,
+                    transition: { duration: 0.3 }
+                }}
+                initial={{ scale: 1 }}
+            >
+                <img className='Page__Projects__Card__Image' src={item.imgSrc}></img>
+                <h2 className ='Page__Projects__Card__Title'>{item.title}</h2>
+                <p className='Page__Projects__Card__Description'>{item.description}</p>
+                <div className='Page__Projects__Card__Buttons'>
+                    <button className='Page__Projects__Card__Buttons__Github' type="button" onClick={()=> window.open(item.gitLink, '_blank')}>Github</button>
+                    <button className='Page__Projects__Card__Buttons__Website' type="button" onClick={()=> window.open(item.projectLink, '_blank')}>Website</button>
+                </div>
+            </motion.div>
+        </li>
     )
 }
 

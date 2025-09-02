@@ -24,12 +24,30 @@
             flex-direction: column;
             width: 450px;
             height: 600px;
-            background: rgb(30, 30, 30);
+            background: rgba( 0, 0, 0, 0.7);
+            
             margin: 50px;
             align-items: center;
             border-radius: 15px;
             filter: drop-shadow(0 0 5px white);
             transition: all 0.5s ease;
+            
+            // Enhanced 3D appearance
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+            
+            // Add subtle depth even at rest
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            
+            // Subtle gradient for depth
+            background: linear-gradient(
+                145deg, 
+                rgba(20, 20, 20, 0.9), 
+                rgba(0, 0, 0, 0.7)
+            );
 
             &__Title{
                 margin-top: 5%;
@@ -48,6 +66,10 @@
             }
 
             &__Description {
+                background: rgb(30, 30, 30);
+                padding: 2px;
+                border-radius: inherit;
+                height: 35%;
                 text-overflow: wrap;
                 margin-right: 10px;
                 margin-left: 10px;
@@ -57,24 +79,134 @@
             }
 
             &__Buttons {
+                
                 margin-top: auto;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
                 font-size: x-large;
                 font-family: "Geo", Arial, Helvetica, sans-serif;
             }
 
             &__Buttons__Github {
-                background: #000;
+                background: rgb(32, 32, 32);
+                border-radius: 10px;
                 padding: 5px 10px;
                 filter: drop-shadow(0 0 5px white);
+                text-decoration: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                white-space: nowrap;
+                cursor: pointer;
+                will-change: transform;
+                transform: translate3d(0, 0, 0); 
+                backface-visibility: hidden;
+                
+            }
+
+            &__Buttons__Github:before {
+                content: "";
+                position: absolute;
+                background: linear-gradient(45deg, 
+                #003f1f, 
+                #00ff41, 
+                #a6ffb0,
+                #00ff41, 
+                #003f1f );
+                top: -2px;
+                left: -2px;
+                background-size: 400%;
+                z-index: -1;
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                filter: blur(5px);
+                border-radius: inherit;
+                opacity: 0;
+                transition: opacity .3s ease-in-out;
+            }
+
+            &__Buttons__Github:active {
+                color: black
+            }
+
+            &__Buttons__Github:active:after {
+                background: transparent;
+            }
+
+            &__Buttons__Github:hover:before {
+                opacity: 1;
+            }
+
+            &__Buttons__Github:after {
+                z-index: -1;
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #111;
+                left: 0;
+                top: 0;
+                border-radius: inherit;
             }
 
             &__Buttons__Website {
+                background: rgb(32, 32, 32);
+                border-radius: 10px;
                 margin-left: 100px;
                 padding: 5px 10px;
-                background: #000;
+                text-decoration: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                white-space: nowrap;
+                cursor: pointer;
                 filter: drop-shadow(0 0 5px white);
             }
+
+            &__Buttons__Website:before {
+                content: "";
+                position: absolute;
+                background: linear-gradient(45deg, 
+                #003f1f, 
+                #00ff41, 
+                #a6ffb0,
+                #00ff41, 
+                #003f1f );
+                top: -2px;
+                left: -2px;
+                background-size: 400%;
+                z-index: -1;
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                filter: blur(5px);
+                border-radius: inherit;
+                opacity: 0;
+                transition: opacity .3s ease-in-out;
+            }
+
+            &__Buttons__Website:active {
+                color: black
+            }
+
+            &__Buttons__Website:active:after {
+                background: transparent;
+            }
+
+            &__Buttons__Website:hover:before {
+                opacity: 1;
+            }
+
+            &__Buttons__Website:after {
+                z-index: -1;
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: #111;
+                left: 0;
+                top: 0;
+                border-radius: inherit;
+            }
+
         }
 
         &__Card:before {
@@ -122,15 +254,22 @@
     }
     .Page__Projects__Card:hover{
         filter: drop-shadow(0 0 0 rgba(#000, 0));
-        transform: scale(1.3);
-    }
-    .Page__Projects__Card:hover +.next-sibling {
-        transform: scale(0.5);
-        filter: blur();
     }
     .Page__Projects__Card:hover .Page__Projects__Card__Title{
         animation: glowOptimized 2s alternate infinite;
     };
+    .Page__Projects__Card__Buttons__Github::before {
+        animation: glowing 20s linear infinite;
+    }
+    .Page__Projects__Card__Buttons__Github:hover {
+        filter: drop-shadow(0 0 0 rgba(0,0,0, 0))
+    }
+    .Page__Projects__Card__Buttons__Website::before {
+        animation: glowing 20s linear infinite;
+    }
+    .Page__Projects__Card__Buttons__Website:hover {
+        filter: drop-shadow(0 0 0 rgba(0,0,0, 0))
+    }
 }
 
 @keyframes glowing {

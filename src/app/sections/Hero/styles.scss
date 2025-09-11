@@ -12,15 +12,7 @@
     max-width: 800px;
     padding: 2rem;
     perspective: 1000px;
-  }
-
-
-  @keyframes glowing {
-      0% { background-position: 0 0; }
-      50% { background-position: 400% 0; }
-      100% { background-position: 0 0; }
-  }
-  
+  }  
 
   &__title {
     font-size: 4rem;
@@ -32,7 +24,7 @@
       0 0 30px #ffffff,
       0 0 40px #ffffff;
     margin-bottom: 1rem;
-    font-family: 'Sixtyfour', 'Courier New', monospace;
+    font-family: 'Toxigenesis', 'Courier New', monospace;
     letter-spacing: 2px;
     animation: glowText 2s ease-in-out infinite alternate;
     animation-fill-mode: forwards;
@@ -59,7 +51,7 @@
       0 0 30px #ffffff,
       0 0 40px #ffffff;
     margin-bottom: 1rem;
-    font-family: 'Sixtyfour', 'Courier New', monospace;
+    font-family: 'Toxigenesis', 'Courier New', monospace;
     letter-spacing: 2px;
     animation: glowText 2s ease-in-out infinite alternate;
     
@@ -238,3 +230,9 @@
     filter: blur(0px);
   }
 }
+
+  @keyframes glowing {
+      0% { background-position: 0 0; }
+      50% { background-position: 400% 0; }
+      100% { background-position: 0 0; }
+  }

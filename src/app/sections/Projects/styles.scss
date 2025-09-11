@@ -3,7 +3,7 @@
 
     &__Title {
         font-size: clamp(2rem, 5vw, 3rem);
-        font-family: 'Sixtyfour', 'Courier New', monospace;
+        font-family: 'Toxigenesis', 'Courier New', monospace;
         color: #ffffff;
         will-change: text-shadow; // Optimize text animations
         transform: translateZ(0); // GPU acceleration

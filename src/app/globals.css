@@ -2,6 +2,10 @@
 
 /* Fonts */
 
+html {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: 'Geo';
   src: url('./assets/fonts/Geo/Geo-Regular.ttf');

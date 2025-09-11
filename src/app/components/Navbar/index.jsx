@@ -11,10 +11,6 @@ import './styles.scss';
 
 const data = [
     {
-        label: 'HERO',
-        to: "hero"
-    },
-    {
         label: 'ABOUT',
         to: 'about'
     },

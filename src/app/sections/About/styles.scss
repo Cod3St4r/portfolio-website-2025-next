@@ -38,12 +38,12 @@
         margin-bottom:auto;
         margin-left: auto;
         margin-right: auto;
-        align-items: flex-start;
+        align-items: center;
         padding-right: 10%;
 
         &__Name{
         font-size: clamp(2rem, 5vw, 3rem);
-        font-family: 'Sixtyfour', 'Courier New', monospace;
+        font-family: 'Toxigenesis', 'Courier New', monospace;
         color: #ffffff;
         will-change: text-shadow; // Optimize text animations
         transform: translateZ(0); // GPU acceleration
@@ -59,7 +59,7 @@
         &__Btn {
             position: relative;
             align-items: center;
-            margin-top: 20px;
+            margin: 10px auto;
             background: rgb(32, 32, 32);
             border-radius: 10px;
             color: #FFFFFF;
@@ -78,8 +78,7 @@
             -webkit-user-select: none;
             touch-action: manipulation;
             white-space: nowrap;
-            margin-right: auto;
-            margin-left: auto;
+            
             cursor: pointer;
             filter: drop-shadow(0 0 3px white);
             will-change: transform; // Tell browser to optimize

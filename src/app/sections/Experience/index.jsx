@@ -6,6 +6,10 @@ import "./styles.scss";
 import { SiBmw } from "react-icons/si"
 import { FaGoogle, FaXbox, FaReact, FaPython, FaUnity, FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa"
 import { IoIosArrowDown } from "react-icons/io";
+import {gsap} from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
+import { MdOutlineQuestionMark } from "react-icons/md";
 
 
 const iconList = [
@@ -23,20 +27,18 @@ const exp = [
         name: "BMW",
         title: "Financial Controlling Intern; May 2025 - Aug 2025",
         description: "As a Financial Controlling Intern at BMW, you support the analysis and optimization of financial processes across various business units. Your responsibilities include preparing reports, developing dashboards, and assisting with budget monitoring to ensure accuracy and compliance. You collaborate closely with senior controllers, gaining hands-on experience with data visualization tools and process automation."
-        
     },
      {
-        icon: FaGoogle,
-        name: "Google",
-        title: "Software Dev Intern; May 2024 - Aug 2024",
-        description: "As a Software Developer at Google, you design, code, test, and maintain high-performance applications that serve millions of users worldwide. You work in cross-functional teams to solve complex technical challenges, leveraging scalable infrastructure and cutting-edge technologies. Your role involves writing clean, efficient code while contributing to system architecture and product innovation."
+        icon: MdOutlineQuestionMark,
+        name: "Could Be Yours",
+        title: "Position; Month Year - Month Year",
+        description: "Experience is important and I enjoy learning more and more. If you think I would be a great fit for your company let me know and give me the experience I am looking for. Thank You."
     },
      {
-        icon: FaXbox,
-        name: "Xbox",
-        title: "Game Dev; May 2023 - Aug 2023",
-        description: "As a Game Developer for Xbox, you create engaging, interactive experiences optimized for the Xbox ecosystem. You work on game mechanics, performance optimization, and platform-specific features to ensure a smooth player experience. Collaborating with artists, designers, and other developers, you bring game concepts to life from prototype to final release."
-
+        icon: MdOutlineQuestionMark,
+        name: "Could Be Yours",
+        title: "Position; Month Year - Month Year",
+        description: "Experience is important and I enjoy learning more and more. If you think I would be a great fit for your company let me know and give me the experience I am looking for. Thank You."
     },
 ];
 
@@ -61,10 +63,27 @@ const Experience = () => {
 
     const CurrentIcon = iconList[index]
 
+    useGSAP(
+        () => {
+            gsap.from('.MainContainer',{
+                scrollTrigger: '.MainContainer',
+                opacity: 0,
+                y:100
+            })
+            gsap.to('.MainContainer', {
+                scrollTrigger: '.MainContainer',
+                duration: 1.5,
+                ease: "power1.out",
+                opacity: 1,
+                y:0
+            })
+        }
+    )
+
     return (
     <div className="MainContainer">
         <div className="MainContainer__TechStack">
-            <h1>Tech Stack</h1>
+            <h1 className="Header1">Tech Stack</h1>
             <div className="MainContainer__TechStack__Screen">
                 <CurrentIcon className="MainContainer__TechStack__Logo"/>
             </div>
@@ -73,7 +92,7 @@ const Experience = () => {
 
 
         <div className="MainContainer__Professional">
-            <h1>Experience</h1>
+            <h1 className="Header2">Experience</h1>
             <ul className="MainContainer__Professional__Menu">
                 {
                     exp.map((item, key) => (

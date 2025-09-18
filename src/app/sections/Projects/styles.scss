@@ -1,46 +1,57 @@
 .Page {
-    margin-top: 50px;
+    padding: 0 5vw;
+    height: 100vh;
 
     &__Title {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(2rem, 5vw, 5rem);
         font-family: 'Toxigenesis', 'Courier New', monospace;
         color: #ffffff;
         will-change: text-shadow; // Optimize text animations
         transform: translateZ(0); // GPU acceleration
         letter-spacing: -1px;
-        margin-bottom: 30px;
         text-align: center;
+        margin-bottom: 5vh;
     }
 
     &__Projects{
-        display:flex;
-        flex-direction: row;
-        justify-content: center;
-        
+        // Responsive grid instead of fixed flex row
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        gap: clamp(1rem, 2vw, 2.5rem);
+        justify-items: center;
+        align-items: stretch;
+        width: 100%;
+        padding-inline: clamp(0.75rem, 2vw, 2.5rem);
 
+        // Allow 3D hover overflow to be visible
+        overflow: visible;
 
         &__Card {
             display: flex;
             flex-direction: column;
-            width: 450px;
-            height: 600px;
-            
-            margin: 50px;
+            // Maintain original 450x600 ratio => width/height = 3/4
+            aspect-ratio: 3 / 4;
+            width: clamp(260px, 30vw, 450px);
+            max-width: 100%;
+            // Let aspect-ratio control height (remove fixed height)
+            height: auto;
+
+            margin: 0; // spacing now handled by grid gap
             align-items: center;
             border-radius: 15px;
             filter: drop-shadow(0 0 5px white);
-            transition: all 0.5s;
-            
+            transition: transform 0.5s, box-shadow 0.5s, filter 0.5s;
+
             // Enhanced 3D appearance
             transform-style: preserve-3d;
             perspective: 1000px;
             position: relative;
-            
+
             // Add subtle depth even at rest
             box-shadow: 
                 0 10px 30px rgba(0, 0, 0, 0.3),
                 0 0 0 1px rgba(255, 255, 255, 0.1);
-            
+
             // Subtle gradient for depth
             background: linear-gradient(
                 145deg, 
@@ -49,38 +60,36 @@
             );
 
             &__Title{
-                margin-top: 5%;
+                margin: 2%;
                 font-size: xx-large;
                 font-family: "Toxigenesis", Arial, Helvetica, sans-serif;
             }
 
             &__Image {
-                width: inherit;
-                height: 40%;
+                width: 100%;
+                height: 40%; // proportional to card height via flex column
                 object-fit: cover;
-                border-top-right-radius:  inherit; 
-                border-top-left-radius:  inherit; 
+                border-top-right-radius: inherit; 
+                border-top-left-radius: inherit; 
                 object-position: 50% 10%;
-
+                flex-shrink: 0;
             }
 
             &__Description {
                 background: rgb(30, 30, 30);
-                padding: 10px;
+                padding: clamp(0.5rem, 1vw, 0.75rem);
                 border-radius: inherit;
                 height: 35%;
                 text-overflow: wrap;
-                margin-right: 10px;
-                margin-left: 10px;
-                font-size: larger;
+                margin: 0 5%;
+                font-size: clamp(0.85rem, 0.9rem + 0.4vw, 1.05rem);
+                line-height: 1.25;
                 font-family: "Geo", Arial, Helvetica, sans-serif;
-
+                overflow: hidden;
             }
 
             &__Buttons {
-                
-                margin-top: auto;
-                margin-bottom: 20px;
+                margin: 5%;
                 font-size: x-large;
                 font-family: "Geo", Arial, Helvetica, sans-serif;
             }
@@ -150,7 +159,7 @@
             &__Buttons__Website {
                 background: rgb(32, 32, 32);
                 border-radius: 10px;
-                margin-left: 100px;
+                margin-left: clamp(1rem, 5vw, 100px);
                 padding: 5px 10px;
                 text-decoration: none;
                 user-select: none;
@@ -244,6 +253,18 @@
             top: 0;
             border-radius: inherit;
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Page {
+        margin-top: 40vh;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .Page__Projects {
+        flex-direction: column;
     }
 }
 

@@ -1,6 +1,9 @@
 "use client";
 import {React} from "react";
 import "./styles.scss"
+import {gsap} from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
 
 const Contact = () => {
 
@@ -26,6 +29,23 @@ const Contact = () => {
               console.log(result);
           }
       }
+
+    useGSAP(
+        () => {
+            gsap.from('.ContactSection',{
+                scrollTrigger: '.ContactSection__Form__Input__Email',
+                opacity: 0,
+                y:200
+            })
+            gsap.to('.ContactSection', {
+                scrollTrigger: '.ContactSection__Form__Input__Email',
+                duration: 1.5,
+                ease: "power1.out",
+                opacity: 1,
+                y:0
+            })
+        }
+    )
 
     return(
         <div id="contact-section" className="ContactSection">

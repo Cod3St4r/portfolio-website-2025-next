@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import TypewriterComponent from './typewrite.jsx'
 import {motion, useMotionValue, useSpring, useTransform} from 'framer-motion'
 
+
 const Home = () => {
     const router = useRouter();
 
@@ -39,9 +40,6 @@ const Home = () => {
         y.set(0)
     }
 
-    const handleNavigateToContactMePage = () => {
-        router.push('/contact');
-    }
 
     return(
         <div className="home">
@@ -55,8 +53,8 @@ const Home = () => {
                     rotateX: xRotation,
                     rotateY: yRotation,
                 }}>
-                    <h1 className="home__test">Hello, I'm Carlos,</h1>
-                    <TypewriterComponent />
+                    <h1 className="home__test">I'm Carlos, and</h1>
+                    <TypewriterComponent/>
                 </motion.div>
             </div>
         </div>

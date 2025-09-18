@@ -4,6 +4,9 @@ import React from "react";
 import "./styles.scss";
 import { useRouter } from 'next/navigation';
 import {motion, useMotionValue, useSpring, useTransform} from 'framer-motion'
+import {gsap} from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
 
 
 
@@ -14,30 +17,47 @@ import {motion, useMotionValue, useSpring, useTransform} from 'framer-motion'
 
 const projects =[
     {
-        imgSrc: '/images/frpic.jpg',
-        title: 'Pokemon Red',
-        description:'Pokémon Red Version is a foundational 1996 Game Boy role-playing video game developed by Game Freak and published by Nintendo. Players travel through the Kanto region, capturing and training a variety of Pokémon, battling Gym Leaders, and preventing Team Rocket from stealing Pokémon to become the greatest trainer.',
-        gitLink:'https://en.wikipedia.org/wiki/Pok%C3%A9mon_Red,_Blue,_and_Yello',
-        projectLink:'https://arcadespot.com/game/pokemon-red/',
+        imgSrc: '/images/code.jpg',
+        title: 'In Progress',
+        description:"I currently do not have a project to show here. Check back next time to see what I am working on.",
+        gitLink:'https://github.com/Cod3St4r',
+        projectLink:'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&pp=ygUJcmljayByb2xsoAcB',
     },
     {
-        imgSrc: '/images/ygo5ds.jpg',
-        title: '5ds Tagforce',
-        description:"Yu-Gi-Oh! 5D's Tag Force 4 is a card battle strategy game for the PlayStation Portable (PSP) released by Konami in 2009, featuring over 3,500 cards and focusing on the story and characters from the Yu-Gi-Oh! 5D's animated series.",
-        gitLink:"https://yugioh.fandom.com/wiki/Yu-Gi-Oh!_5D%27s_Tag_Force_4",
-        projectLink:"https://www.emulatorgames.net/roms/playstation-portable/yu-gi-oh-5ds-tag-force-4/",
+        imgSrc: '/images/code.jpg',
+        title: 'In Progress',
+        description:"I currently do not have a project to show here. Check back next time to see what I am working on.",
+        gitLink:'https://github.com/Cod3St4r',
+        projectLink:'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&pp=ygUJcmljayByb2xsoAcB',
     },
     {
-        imgSrc: '/images/titanfall.jpg',
-        title: 'TitanFall',
-        description:"Titanfall is a media franchise that mainly features first-person shooter games. The series was created by Respawn Entertainment and debuted on Xbox and Microsoft Windows; it has expanded to other consoles and platforms.",
-        gitLink:"https://en.wikipedia.org/wiki/Titanfall",
-        projectLink:"https://www.ea.com/en/games/titanfall/titanfall-2",
-    }
+        imgSrc: '/images/code.jpg',
+        title: 'In Progress',
+        description:"I currently do not have a project to show here. Check back next time to see what I am working on.",
+        gitLink:'https://github.com/Cod3St4r',
+        projectLink:'https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1&pp=ygUJcmljayByb2xsoAcB',
+    },
 ]
 
 
 const Projects = () => {
+    useGSAP(
+        () => {
+            gsap.from('.Page',{
+                scrollTrigger: '.Page__Projects',
+                opacity: 0,
+                y:200
+            })
+            gsap.to('.Page', {
+                scrollTrigger: '.Page__Projects',
+                duration: 1.5,
+                ease: "power1.out",
+                opacity: 1,
+                y:0
+            })
+        }
+    )
+
     return(
         <div className='Page'> 
             <h1 className='Page__Title'>Projects</h1>

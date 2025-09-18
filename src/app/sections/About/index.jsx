@@ -2,14 +2,37 @@
 
 import React from "react";
 import "./styles.scss";
-import { usePathname } from 'next/navigation';
+import {gsap} from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from '@gsap/react';
 
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const About=()=>{
-    const pathname = usePathname();
+
+    useGSAP(
+        () => {
+            gsap.from('.PageContent',{
+                scrollTrigger: '.PageContent',
+                opacity: 0,
+                y:100
+            })
+            gsap.to('.PageContent', {
+                scrollTrigger: '.PageContent',
+                duration: 1.5,
+                ease: "power1.out",
+                opacity: 1,
+                y:0
+            })
+        }
+    )
+
     return(
         <section id="about" className="about">
-            <div className="PageContent">
+            <div className="PageContent" id="Page">
+                <div className="PageContent__Image_Container">
+                    <img className="PageContent__Image_Container__img" src={'/images/me.jpeg'} alt="Creator: Carlos Gabriel Mercado Jimenez"/>
+                </div>
                 <div className="PageContent__Text">
                     <h1 className="PageContent__Text__Name">A Jack of All Trades</h1>
                     <p className="PageContent__Text__Para">
@@ -19,11 +42,9 @@ const About=()=>{
                         <button type="button" className="PageContent__Text__Btn">Contact Me</button>
                     </a>
                 </div>
-                <div className="PageContent__Image_Container">
-                    <img className="PageContent__Image_Container__img" src={'/images/me.jpeg'} alt="Creator: Carlos Gabriel Mercado Jimenez"/>
-                </div>
             </div>
         </section>
     )
 }
+
 export default About;

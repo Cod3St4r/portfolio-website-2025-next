@@ -8,10 +8,14 @@ const TypewriterComponent = memo(() => {
     <Typewriter
       options={{
         strings: [
-          'and this is my portfolio',
+          'this is my portfolio',
+          "I'm a game dev",
+          "I play guitar",
+          "I make websites",
+          "I do graphic design"
         ],
         autoStart: true,
-        loop: false,
+        loop: true,
         delay: 75
       }}
     />

@@ -1,11 +1,12 @@
-
 .PageContent {
     display:flex;
     flex-direction: row;
-    margin: 0 3%;
-    margin-bottom: auto;
-    padding: auto;
-    contain: layout style paint; // Limit reflow/repaint scope
+    contain: layout style paint;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 0 2vw;
+    height: 60vh;
     
 
     &__Image_Container {
@@ -15,13 +16,13 @@
         align-items: center;
         width: clamp(1vw, 100vw, 300vw);
         aspect-ratio: 1 / 1; // Modern way to maintain perfect square
-        margin: 20px auto; 
         border-radius: 50%;
         overflow: hidden; // Move overflow to container
 
         &__img {
+            max-width: 100%;
             width: 80%;
-            height: 80%;
+            height: auto;
             aspect-ratio: 1 / 1;
             border-radius: 50%;
             object-fit: cover;
@@ -34,15 +35,12 @@
     &__Text {
         display: flex;
         flex-direction: column;
-        margin-top:auto;
-        margin-bottom:auto;
-        margin-left: auto;
-        margin-right: auto;
         align-items: center;
-        padding-right: 10%;
+        padding: 0 5vw;
+        text-align: center;
 
         &__Name{
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(2rem, 5vw, 4rem);
         font-family: 'Toxigenesis', 'Courier New', monospace;
         color: #ffffff;
         will-change: text-shadow; // Optimize text animations
@@ -53,13 +51,14 @@
         &__Para{
             font-family: Geo;
             font-size: 1.5rem;
+            margin: 2% 0;
+
         }
 
 
         &__Btn {
             position: relative;
             align-items: center;
-            margin: 10px auto;
             background: rgb(32, 32, 32);
             border-radius: 10px;
             color: #FFFFFF;
@@ -67,8 +66,8 @@
             font-family: "Geo", sans-serif;
             font-size: 20px;
             justify-content: center;
-            height: 50px;
             width: 100px;
+            aspect-ratio: 2/1;
             border: none;
             outline: none;
             max-width: 100%;
@@ -138,62 +137,33 @@
 
 
 
-// Mobile responsive text
-
-@media (max-width: 1025px) {
-    .PageContent__Image_Container {
-        width: clamp(1vw, 200vw, 1000vw);
-        aspect-ratio: 1 / 1;
+@media screen and (max-width: 768px) {
+    .PageContent {
+        flex-direction: column;
+        height: 200vh;
     }
 }
 
-@media (max-width: 768px) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
     .PageContent {
-        flex-direction: column-reverse;
-
-        &__Text {
-            align-items: center;
-            justify-content: center;
-
-            &__Name {
-            font-size: clamp(1.5rem, 6vw, 2.5rem);
-            margin: 15px 0;
-            letter-spacing: -0.5px;
-            text-align: center;
-            }      
+        flex-direction: column;
+        height: 100vh;
+        &__Image_Container{
+           width: 70%;
         }
-
-        
-
-        &__Image_Container {
-            width: min(70vw, 300px);
-            // Remove height - aspect-ratio handles it
-            margin: 15px auto;
-        }
-    }   
-}
-
-@media (max-width: 480px) {
-    .PageContent {
-        flex-direction: column-reverse;
-
-        &__Text__Name {
-            font-size: clamp(1.2rem, 7vw, 2rem);
-            margin: 10px 0;
-            letter-spacing: 0px;
-            text-align: center;
-        }
-
-        &__Image_Container {
-            width: min(80vw, 250px);
-            // Remove height - aspect-ratio handles it
-            margin: 10px auto;
-        }
+    }
+    .PageContent__Text__Para {
+        font-size: 2.5rem;
+    }
+    .PageContent__Text__Btn {
+        width: 200px;
+        font-size: 2rem
     }
 }
 
 // Only animate if user allows motion
 @media (prefers-reduced-motion: no-preference) {
+
     .PageContent__Image_Container__img {
         animation: svgGlowOptimized 2s ease-in-out infinite alternate, FadeIn 1s ease-out;
     }

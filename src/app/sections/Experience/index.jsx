@@ -26,7 +26,7 @@ const exp = [
         icon: SiBmw,
         name: "BMW",
         title: "Financial Controlling Intern; May 2025 - Aug 2025",
-        description: "As a Financial Controlling Intern at BMW, you support the analysis and optimization of financial processes across various business units. Your responsibilities include preparing reports, developing dashboards, and assisting with budget monitoring to ensure accuracy and compliance. You collaborate closely with senior controllers, gaining hands-on experience with data visualization tools and process automation."
+        description: "As a Financial Controlling Intern at BMW, you support the analysis and optimization of financial processes across various business units. Your responsibilities include preparing reports, developing dashboards, and assisting with budget monitoring to ensure accuracy and compliance."
     },
      {
         icon: MdOutlineQuestionMark,

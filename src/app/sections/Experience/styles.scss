@@ -19,7 +19,7 @@
             display: flex;
             position: relative;
             border: 4px solid white;
-            height: 35vh;
+            height: 45vh;
             aspect-ratio: 1/1;
             background: linear-gradient(to top, #000000, #000000, #292929, #292929);
             background-size: cover;
@@ -47,7 +47,7 @@
         &__Logo {
             position: relative;
             color: var(--green-theme-main-color);
-            font-size: 10rem;
+            font-size: 30vh;
             filter: blur(.5px);
         }
 
@@ -131,13 +131,13 @@
                     &__Name {
                         color: white;
                         font-family: "Toxigenesis"; 
-                        font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+                        font-size: clamp(1rem, 2.5vw, 1.6rem);
                         margin: 0;
                     }
                     &__Title {
                         color: white;
                         font-family: Geo;
-                        font-size: clamp(1rem, 2vw, 1.3rem);
+                        font-size: clamp(.7rem, 2vw, 1.3rem);
                         margin: 0.2rem 0 0 0;
                     }
 
@@ -152,8 +152,7 @@
                         }
                         
                         &.expanded {
-                            max-height: clamp(180px, 30vh, 320px);
-                            padding-top: 0.75rem;
+                            max-height: clamp(200px, 30vh, 400px);
                             margin-top: 0.5rem;
                         }
 
@@ -163,7 +162,8 @@
                             font-size: clamp(0.9rem, 1.8vw, 1.1rem);
                             line-height: 1.4;
                             margin: 0;
-                            word-wrap: break-word;
+                            overflow-wrap: break-word;
+                            word-break: break-word;
                         }
                     }
                 }
@@ -266,6 +266,15 @@
     }   
     .MainContainer__TechStack {
         margin-right: 0;
+    }
+    .MainContainer__Professional__Menu__Item__Arrow {
+        font-size: small;
+    }
+    .MainContainer__Professional__Menu__Item__Text__Desc {
+        p {
+            line-height: 1;
+            font-size: small;
+        }
     }
 }
 

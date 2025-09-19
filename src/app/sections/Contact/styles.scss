@@ -206,6 +206,21 @@
     }
 }
 
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .ContactSection {
+        margin-top: 80vh;
+    }
+    .ContactSection__Form__Title {
+        font-size: 3rem
+    }
+    .ContactSection__Form__Input__Button {
+        margin-top: 3vh;
+        width: 15vw;
+        height: 5vh;
+        font-size: 2rem
+    }
+}
+
 @media screen and (max-width: 768px) {
     .ContactSection {
         margin-top: 100vh;

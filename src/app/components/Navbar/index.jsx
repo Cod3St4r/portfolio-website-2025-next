@@ -23,10 +23,6 @@ const data = [
         to: 'projects'
     },
     {
-        label: 'RESUME',
-        to: 'resume'
-    },
-    {
         label: 'CONTACT',
         to: 'contact'
     },
@@ -68,6 +64,7 @@ const Navbar = () => {
                             </li>
                         ))
                     }
+                    <li className="navbar_container_menu_item"><a href="/Carlos_MercadoJimenez_Resume.docx.pdf" download>RESUME</a></li>
                 </ul>
                 <div className="nav_icon" onClick={handleToggleIcon}>
                     {

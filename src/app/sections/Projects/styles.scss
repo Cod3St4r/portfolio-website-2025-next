@@ -256,6 +256,7 @@
     }
 }
 
+
 @media screen and (max-width: 768px) {
     .Page {
         margin-top: 40vh;
@@ -265,7 +266,22 @@
 @media screen and (min-width: 769px) and (max-width: 1024px) {
     .Page__Projects {
         flex-direction: column;
+        &__Card{
+            margin-bottom: 2vh;
+            width: 40vh;
+            &__Description{
+                font-size: 2rem
+            }
+        }
     }
+    .Page{
+        margin: 10vh 0;
+    }
+    .Page__Projects{
+        display: flex;
+        align-content: center;
+        align-items: center;
+        }
 }
 
 @media (prefers-reduced-motion: no-preference) {

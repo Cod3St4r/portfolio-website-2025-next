@@ -31,7 +31,7 @@ const About=()=>{
         <section id="about" className="about">
             <div className="PageContent" id="Page">
                 <div className="PageContent__Image_Container">
-                    <img className="PageContent__Image_Container__img" src={'/images/me.jpeg'} alt="Creator: Carlos Gabriel Mercado Jimenez"/>
+                    <img className="PageContent__Image_Container__img" src={'/images/me.JPEG'} alt="Creator: Carlos Gabriel Mercado Jimenez"/>
                 </div>
                 <div className="PageContent__Text">
                     <h1 className="PageContent__Text__Name">A Jack of All Trades</h1>

@@ -7,6 +7,10 @@ import { useGSAP } from '@gsap/react';
 
 const Contact = () => {
 
+    function changeText() {
+        document.getElementById("ContactSection__Form__Input__Button").textContent = "Submitted!";
+    }
+
     async function handleSubmit(event) {
           event.preventDefault();
           const formData = new FormData(event.target);
@@ -28,6 +32,7 @@ const Contact = () => {
           if (result.success) {
               console.log(result);
           }
+          changeText()
       }
 
     useGSAP(
@@ -54,9 +59,8 @@ const Contact = () => {
                 <div className="ContactSection__Form__Input">
                     <input type="text" name="name" placeholder="Your Name" className="ContactSection__Form__Input__Name" required></input>
                     <input type="email" name="email" placeholder="Your Email" className="ContactSection__Form__Input__Email" required></input>
-                    
                     <textarea name="message" placeholder="Your message" className="ContactSection__Form__Input__Text" required></textarea>
-                    <button className="ContactSection__Form__Input__Button"type="submit">Submit</button>
+                    <button id="ContactSection__Form__Input__Button" className="ContactSection__Form__Input__Button" type="submit">Submit</button>
                 </div>
             </form>
         </div>

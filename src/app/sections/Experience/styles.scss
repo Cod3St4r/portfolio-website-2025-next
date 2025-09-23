@@ -98,6 +98,7 @@
                 max-width: 100%;
 
                 &.active {
+                    aspect-ratio: auto;
                     align-items: flex-start;
                     padding: 20px;
                     min-height: auto;

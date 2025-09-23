@@ -50,6 +50,10 @@ const Experience = () => {
 
     const handleItemClick = (itemIndex) => {
         setActiveItem(activeItem === itemIndex ? null : itemIndex);
+
+        requestAnimationFrame(() => {
+            document.body.offsetHeight;
+        })
     };
 
     // Icon switching in Tech Stack

@@ -16,7 +16,11 @@ My first website built to be a virtual resume. I have included work experience, 
 Since junior year I knew I wanted to create a portfolio that not only reflectecd my coding skills but also reflected my personality. Embarking on this journey was no small feet as I had no coding experience regarding webdevelopment and didn't even really know how I wanted it to look. It took many youtube videos, Stackoverflow florums, and plenty of Chatgpt prompts but after many different drafts and revisions I was able to make something that I can call mine. Looking back on it I already want to do something different but that just cause I want it to reflect my personality a bit more. Thats for another time and project, but for now I'm glad I have to something to present as my own.
 ## 🎞️ Preview
 Visit Website: https://carlos-dev-portfolio.vercel.app/
-https://github.com/user-attachments/assets/8cf9b7c7-5139-4c18-ab6d-3b76a13c8ae7
+
+
+https://github.com/user-attachments/assets/55355172-d201-41ed-9dee-21dc6ab8fee5
+
+
 
 
 

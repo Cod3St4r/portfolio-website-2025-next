@@ -18,7 +18,11 @@ Since junior year I knew I wanted to create a portfolio that not only reflectecd
 Visit Website: https://carlos-dev-portfolio.vercel.app/
 
 
-https://github.com/user-attachments/assets/55355172-d201-41ed-9dee-21dc6ab8fee5
+https://github.com/user-attachments/assets/68660acb-7cec-4340-b3f6-04fdb4ffde24
+
+
+
+
 
 
 

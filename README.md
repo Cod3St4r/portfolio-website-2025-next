@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🖥️ Developer Portfolio Website
+My first website built to be a virtual resume. I have included work experience, my techstack, current projects, and a way to message me if you would like to reach out. It was built on the Next.js framework to make deployment on vercel seamless and utilizes framer motion for captivating animations.
+## ⌨️ Tech Stack
+* React
+* Next.js
+* Framer Motiono
+* SCSS
+* Vercel
+## 🚀 Features
+* Scroll animations for clean information transitions.
+* Dynamic dropdown points for clear view of experience.
+* Interactable project cards, displaying github and website link to projects.
+* Modular webdesign to display consistently across different screen sizes.
+* Messaging contact card connected to my email.
+## 🗺️ The Production Pathway
+Since junior year I knew I wanted to create a portfolio that not only reflectecd my coding skills but also reflected my personality. Embarking on this journey was no small feet as I had no coding experience regarding webdevelopment and didn't even really know how I wanted it to look. It took many youtube videos, Stackoverflow florums, and plenty of Chatgpt prompts but after many different drafts and revisions I was able to make something that I can call mine. Looking back on it I already want to do something different but that just cause I want it to reflect my personality a bit more. Thats for another time and project, but for now I'm glad I have to something to present as my own.
+## 🎞️ Preview
+Visit Website: https://carlos-dev-portfolio.vercel.app/
+https://github.com/user-attachments/assets/8cf9b7c7-5139-4c18-ab6d-3b76a13c8ae7
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
